@@ -7,3 +7,9 @@ class IcaCourse(models.Model):
 
     name = fields.Char()
     description = fields.Text()
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+        ('unpublished', 'Unpublished'),
+    ], default='draft')
+    author_ids = fields.Many2many('res.partner', string='Authors')

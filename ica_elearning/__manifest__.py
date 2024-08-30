@@ -5,7 +5,10 @@
     "depends": ["base", "web"],
     "data": [
         "security/ir.model.access.csv",
+
         "views/ica_course.xml",
+        "views/ica_course_module.xml",
+
         "views/menus.xml",
     ],
     "license": "LGPL-3"
