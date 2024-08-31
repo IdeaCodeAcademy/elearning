@@ -22,6 +22,13 @@ class IcaCourse(models.Model):
     lesson_count = fields.Integer(string='Lessons', compute="_compute_lesson_count")
     enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
     enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+    reference = fields.Char(default=lambda self: _('New'), copy=False, readonly=True, )
+
+    @api.model
+    def create(self, values):
+        if values.get('number', _('New')) == _('New'):
+            values['reference'] = self.env['ir.sequence'].next_by_code(self._name)
+        return super(IcaCourse, self).create(values)
 
     @api.depends('enrollment_ids')
     def _compute_enrollment_count(self):
