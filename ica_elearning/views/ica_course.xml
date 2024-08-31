@@ -25,6 +25,9 @@
             <form string="ica_course_form">
                 <header>
                     <button name="action_draft" type="object" string="Rest to Draft"/>
+                    <button name="action_self_enrollment" type="object" string="Enroll Course"
+                            class="btn btn-info"
+                            invisible="state != 'published'"/>
                     <button name="action_published" type="object" string="Publish" class="btn-primary"/>
                     <button name="action_published" type="object" string="Unpublish" class="btn-danger"
                             confirm="Are you sure to unpublish course ?"/>
@@ -37,6 +40,9 @@
                         </button>
                         <button name="action_view_lessons" type="object" class="oe_stat_button" icon="fa-magic">
                             <field string="Lessons" name="lesson_count" widget="statinfo"/>
+                        </button>
+                        <button name="action_view_enrollment" type="object" class="oe_stat_button" icon="fa-envelope">
+                            <field string="Enrollment" name="enrollment_count" widget="statinfo"/>
                         </button>
                     </div>
                     <group>

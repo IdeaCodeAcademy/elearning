@@ -20,7 +20,13 @@ class IcaCourse(models.Model):
     lesson_ids = fields.One2many('ica.course.lesson', 'course_id', string='Lessons',
                                  domain=[('state', '=', 'published')])
     lesson_count = fields.Integer(string='Lessons', compute="_compute_lesson_count")
-    enrollment_ids = fields.One2many('ica.course.enrollment','course_id', string='Enrollment',)
+    enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
+    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+
+    @api.depends('enrollment_ids')
+    def _compute_enrollment_count(self):
+        for rec in self:
+            rec.enrollment_count = len(rec.enrollment_ids)
 
     @api.depends('lesson_ids')
     def _compute_lesson_count(self):
@@ -62,3 +68,27 @@ class IcaCourse(models.Model):
             "domain": [("course_id", "=", self.id)],
             "context": {"default_course_id": self.id},
         }
+
+    enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
+    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+
+    @api.depends('enrollment_ids')
+    def _compute_enrollment_count(self):
+        for rec in self:
+            rec.enrollment_count = len(rec.enrollment_ids)
+
+    def action_view_enrollment(self):
+        return {
+            "name": f"{self.name}'s Enrollment",
+            "type": "ir.actions.act_window",
+            "res_model": "ica.course.enrollment",
+            "view_mode": "tree,form",
+            "domain": [("course_id", "=", self.id)],
+            "context": {"default_course_id": self.id},
+        }
+
+    def action_self_enrollment(self):
+        current_partner = self.env.user.partner_id.id
+        if current_partner in self.enrollment_ids.partner_id.ids:
+            raise UserError(_("You are already enrolled in this course."))
+        self.enrollment_ids.create({'partner_id': self.env.user.partner_id.id, 'course_id': self.id})
