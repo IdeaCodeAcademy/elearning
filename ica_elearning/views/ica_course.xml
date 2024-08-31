@@ -68,7 +68,11 @@
                             <field name="enrollment_ids"/>
                         </page>
                         <page name="Feedback">
-                            <field name="feedback_ids"/>
+                            <field name="feedback_ids">
+                                <tree>
+                                    <field name="review"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
