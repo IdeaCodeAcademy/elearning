@@ -55,6 +55,9 @@
                         <page name="Lessons">
                             <field name="lesson_ids"/>
                         </page>
+                        <page name="Enrollment">
+                            <field name="enrollment_ids"/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

@@ -9,6 +9,7 @@
         "views/ica_course.xml",
         "views/ica_course_module.xml",
         "views/ica_course_lesson.xml",
+        "views/ica_course_enrollment.xml",
 
         "views/menus.xml",
     ],

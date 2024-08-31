@@ -1,4 +1,4 @@
-from odoo import api, fields, models,_
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
@@ -20,6 +20,7 @@ class IcaCourse(models.Model):
     lesson_ids = fields.One2many('ica.course.lesson', 'course_id', string='Lessons',
                                  domain=[('state', '=', 'published')])
     lesson_count = fields.Integer(string='Lessons', compute="_compute_lesson_count")
+    enrollment_ids = fields.One2many('ica.course.enrollment','course_id', string='Enrollment',)
 
     @api.depends('lesson_ids')
     def _compute_lesson_count(self):
