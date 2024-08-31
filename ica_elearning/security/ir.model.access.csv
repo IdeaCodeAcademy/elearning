@@ -3,3 +3,5 @@ ica_elearning.access_ica_course,access_ica_course,ica_elearning.model_ica_course
 ica_elearning.access_ica_course_module,access_ica_course_module,ica_elearning.model_ica_course_module,base.group_user,1,1,1,1
 ica_elearning.access_ica_course_lesson,access_ica_course_lesson,ica_elearning.model_ica_course_lesson,base.group_user,1,1,1,1
 ica_elearning.access_ica_course_enrollment,access_ica_course_enrollment,ica_elearning.model_ica_course_enrollment,base.group_user,1,1,1,1
+ica_elearning.access_ica_course_feedback,ica_course_feedback,ica_elearning.model_ica_course_feedback,base.group_user,1,1,1,1
+ica_elearning.access_ica_course_feedback_wizard,ica_course_feedback_wizard,ica_elearning.model_ica_course_feedback_wizard,base.group_user,1,1,1,1

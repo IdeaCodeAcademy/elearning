@@ -97,3 +97,5 @@ class IcaCourse(models.Model):
         # }
         data = {"enrollment_ids": [(0, 0, {"partner_id": current_partner})]}
         self.write(data)
+
+    feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
