@@ -37,6 +37,8 @@
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
+                    <widget name="web_ribbon" title="Published" bg_color="text-bg-success" invisible="state != 'published'"/>
+                    <widget name="web_ribbon" title="Unpublished" bg_color="text-bg-danger" invisible="state != 'unpublished'"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_modules" type="object" class="oe_stat_button" icon="fa-users">
                             <field string="Modules" name="module_count" widget="statinfo"/>
