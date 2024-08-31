@@ -24,6 +24,10 @@
         <field name="arch" type="xml">
             <form string="ica_course_form">
                 <header>
+                    <button name="action_draft" type="object" string="Rest to Draft"/>
+                    <button name="action_published" type="object" string="Publish" class="btn-primary"/>
+                    <button name="action_published" type="object" string="Unpublish" class="btn-danger"
+                            confirm="Are you sure to unpublish course ?"/>
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
