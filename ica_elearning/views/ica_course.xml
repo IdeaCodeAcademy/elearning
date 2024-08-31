@@ -31,6 +31,14 @@
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_modules" type="object" class="oe_stat_button" icon="fa-users">
+                            <field string="Modules" name="module_count" widget="statinfo"/>
+                        </button>
+                        <button name="action_view_lessons" type="object" class="oe_stat_button" icon="fa-magic">
+                            <field string="Lessons" name="lesson_count" widget="statinfo"/>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
