@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="odoo_development_course" model="ica.course">
+            <field name="name">Odoo Development Course</field>
+            <field name="author_ids" eval="[(6,0,[ref('base.partner_admin')])]"/>
+        </record>
+    </data>
+</odoo>

@@ -4,6 +4,8 @@
     "category": "eLearning",
     "depends": ["base", "web"],
     "data": [
+        "data/ica_course.xml",
+
         "security/ir.model.access.csv",
         "wizard/ica_course_feedback_wizard.xml",
         "views/ica_course.xml",
