@@ -1,4 +1,5 @@
-from odoo import api, fields, models
+from odoo import api, fields, models,_
+from odoo.exceptions import UserError
 
 
 class IcaCourse(models.Model):
@@ -34,6 +35,8 @@ class IcaCourse(models.Model):
         self.state = 'draft'
 
     def action_published(self):
+        if not (self.module_ids and self.lesson_ids):
+            raise UserError(_('you should have at least one lesson'))
         self.state = 'published'
 
     def action_unpublished(self):
