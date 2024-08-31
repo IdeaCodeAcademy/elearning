@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
     <record id="ica_course_lesson_action" model="ir.actions.act_window">
         <field name="name">Lessons</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">ica.course.module</field>
+        <field name="res_model">ica.course.lesson</field>
         <field name="view_mode">tree,form</field>
     </record>
 </odoo>

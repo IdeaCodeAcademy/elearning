@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+    <record id="ica_course_view_form" model="ir.ui.view">
+        <field name="name">ica_course_view_form</field>
+        <field name="model">ica.course</field>
+        <field name="arch" type="xml">
+            <form string="ica_course_form">
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="author_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Modules">
+                            <field name="module_ids"/>
+                        </page>
+                        <page name="Lessons">
+                            <field name="lesson_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="ica_course_action" model="ir.actions.act_window">
         <field name="name">Courses</field>
         <field name="type">ir.actions.act_window</field>

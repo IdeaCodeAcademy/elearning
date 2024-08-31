@@ -13,3 +13,5 @@ class IcaCourse(models.Model):
         ('unpublished', 'Unpublished'),
     ], default='draft')
     author_ids = fields.Many2many('res.partner', string='Authors')
+    module_ids = fields.One2many('ica.course.module', 'course_id', string='Modules')
+    lesson_ids = fields.One2many('ica.course.lesson', 'course_id', string='Lessons')

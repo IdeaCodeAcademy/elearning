@@ -7,6 +7,7 @@ class IcaCourseLesson(models.Model):
 
     name = fields.Char()
     module_id = fields.Many2one('ica.course.module', string='Module')
+    course_id = fields.Many2one('ica.course', related="module_id.course_id", string='Course')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('published', 'Published'),
