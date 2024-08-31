@@ -27,8 +27,8 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="module_id"/>
                             <field name="course_id"/>
+                            <field name="module_id"/>
                             <field name="video"/>
                         </group>
                         <group>
