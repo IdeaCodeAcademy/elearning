@@ -56,4 +56,5 @@ class IcaCourse(models.Model):
             "res_model": "ica.course.lesson",
             "view_mode": "tree,form",
             "domain": [("course_id", "=", self.id)],
+            "context": {"default_course_id": self.id},
         }
