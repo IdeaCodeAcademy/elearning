@@ -28,6 +28,7 @@ class IcaCourse(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency', related="company_id.currency_id")
     fees = fields.Monetary(currency_field="currency_id")
     release_date = fields.Date(string='Date')
+    active = fields.Boolean(string='Active',default=True)
 
     @api.model
     def create(self, values):

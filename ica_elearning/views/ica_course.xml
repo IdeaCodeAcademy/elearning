@@ -4,7 +4,7 @@
         <field name="name">ica_course_view_tree</field>
         <field name="model">ica.course</field>
         <field name="arch" type="xml">
-            <tree string="ica_course_view_tree">
+            <tree string="ica_course_view_tree" create="1" edit="1" delete="1" duplicate="1">
                 <field name="name"/>
                 <field name="state" widget="badge"
                        decoration-info="state == 'draft'"
@@ -26,7 +26,7 @@
         <field name="name">ica_course_view_form</field>
         <field name="model">ica.course</field>
         <field name="arch" type="xml">
-            <form string="ica_course_form">
+            <form string="ica_course_form" create="1" edit="1" delete="1" duplicate="0">
                 <header>
                     <button name="action_draft" type="object" string="Rest to Draft"/>
                     <button name="action_self_enrollment" type="object" string="Enroll Course"
