@@ -20,8 +20,7 @@ class IcaCourse(models.Model):
     lesson_ids = fields.One2many('ica.course.lesson', 'course_id', string='Lessons',
                                  domain=[('state', '=', 'published')])
     lesson_count = fields.Integer(string='Lessons', compute="_compute_lesson_count")
-    enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
-    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+
     reference = fields.Char(default=lambda self: _('New'), copy=False, readonly=True)
 
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company)
@@ -91,7 +90,7 @@ class IcaCourse(models.Model):
             "context": {"default_course_id": self.id},
         }
 
-    enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
+    enrollment_ids = fields.One2many('ica.course.enrollment.line', 'course_id', string='Enrollment', )
     enrollment_count = fields.Integer(compute="_compute_enrollment_count")
 
     @api.depends('enrollment_ids')
@@ -103,7 +102,7 @@ class IcaCourse(models.Model):
         return {
             "name": f"{self.name}'s Enrollment",
             "type": "ir.actions.act_window",
-            "res_model": "ica.course.enrollment",
+            "res_model": "ica.course.enrollment.line",
             "view_mode": "tree,form",
             "domain": [("course_id", "=", self.id)],
             "context": {"default_course_id": self.id},

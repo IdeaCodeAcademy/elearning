@@ -81,7 +81,15 @@
                             <field name="lesson_ids"/>
                         </page>
                         <page name="Enrollment">
-                            <field name="enrollment_ids"/>
+                            <field name="enrollment_ids">
+                                <tree>
+<!--                                    <field name="enrollment_id"/>-->
+                                    <field name="partner_id"/>
+                                    <field name="course_id"/>
+                                    <field name="fees"/>
+                                    <field name="currency_id" optional="hide"/>
+                                </tree>
+                            </field>
                         </page>
                         <page name="Feedback">
                             <field name="feedback_ids">

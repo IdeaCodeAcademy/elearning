@@ -7,4 +7,6 @@ class IcaCourseEnrollment(models.Model):
     _rec_name = 'partner_id'
 
     partner_id = fields.Many2one('res.partner')
-    course_id = fields.Many2one('ica.course')
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
+    total_amount = fields.Monetary(currency_field='currency_id')
+    line_ids = fields.One2many('ica.course.enrollment.line', 'enrollment_id')
