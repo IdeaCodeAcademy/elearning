@@ -65,7 +65,8 @@
                             <field name="author_ids" widget="many2many_tags"/>
                             <field name="company_id"/>
                             <field name="currency_id"/>
-                            <field name="fees" groups="ica_elearning.group_author"/>
+                            <field name="fees" groups="ica_elearning.group_manager"/>
+                            <field name="per_fees" groups="ica_elearning.group_author"/>
                             <field name="release_date"/>
                         </group>
                         <group>

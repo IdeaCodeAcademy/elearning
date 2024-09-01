@@ -28,7 +28,13 @@ class IcaCourse(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency', related="company_id.currency_id")
     fees = fields.Monetary(currency_field="currency_id")
     release_date = fields.Date(string='Date')
-    active = fields.Boolean(string='Active',default=True)
+    active = fields.Boolean(string='Active', default=True)
+    per_fees = fields.Monetary(currency_field="currency_id")
+
+    @api.onchange('fees','author_ids')
+    def _onchange_fees(self):
+        if self.fees and self.author_ids:
+            self.per_fees = self.fees / len(self.author_ids)
 
     @api.model
     def create(self, values):
