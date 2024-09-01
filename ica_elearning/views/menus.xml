@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
     <menuitem id="ica_elearning_root" name="ICA" sequence="0"
               web_icon="ica_elearning,static/description/icon.png">
         <menuitem id="course_category" name="Courses" sequence="0"

@@ -1,3 +1,6 @@
+import io
+
+import xlsxwriter
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
@@ -31,14 +34,14 @@ class IcaCourse(models.Model):
     per_fees = fields.Monetary(currency_field="currency_id")
     enrollment_ids = fields.One2many('ica.course.enrollment.line', 'course_id', string='Enrollment', )
     feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
-    enrollment_count = fields.Integer(compute="_compute_enrollment_count",inverse="_inverse_total_amount")
+    enrollment_count = fields.Integer(compute="_compute_enrollment_count", inverse="_inverse_total_amount")
     total_amount = fields.Monetary()
 
     def _inverse_total_amount(self):
         if self.enrollment_ids:
             self.total_amount = sum(self.enrollment_ids.mapped('fees'))
 
-    @api.onchange('fees','author_ids')
+    @api.onchange('fees', 'author_ids')
     def _onchange_fees(self):
         if self.fees and self.author_ids:
             self.per_fees = self.fees / len(self.author_ids)
@@ -98,8 +101,6 @@ class IcaCourse(models.Model):
             "context": {"default_course_id": self.id},
         }
 
-
-
     @api.depends('enrollment_ids')
     def _compute_enrollment_count(self):
         for rec in self:
@@ -125,4 +126,3 @@ class IcaCourse(models.Model):
     #     # }
     #     data = {"enrollment_ids": [(0, 0, {"partner_id": current_partner})]}
     #     self.write(data)
-

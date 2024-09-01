@@ -29,9 +29,9 @@
             <form string="ica_course_form" create="1" edit="1" delete="1" duplicate="0">
                 <header>
                     <button name="action_draft" type="object" string="Rest to Draft"/>
-<!--                    <button name="action_self_enrollment" type="object" string="Enroll Course"-->
-<!--                            class="btn btn-info"-->
-<!--                            invisible="state != 'published'"/>-->
+                    <!--                    <button name="action_self_enrollment" type="object" string="Enroll Course"-->
+                    <!--                            class="btn btn-info"-->
+                    <!--                            invisible="state != 'published'"/>-->
                     <button name="%(ica_elearning.ica_course_feedback_wizard_action)d" type="action" string="Feedback"
                             class="btn btn-outline-primary"
                             invisible="state != 'published'"/>
@@ -84,7 +84,7 @@
                         <page name="Enrollment">
                             <field name="enrollment_ids">
                                 <tree>
-<!--                                    <field name="enrollment_id"/>-->
+                                    <!--                                    <field name="enrollment_id"/>-->
                                     <field name="partner_id"/>
                                     <field name="course_id"/>
                                     <field name="fees"/>
