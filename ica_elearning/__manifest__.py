@@ -2,8 +2,9 @@
     "name": "ICA E-Learning",
     "author": "IdeaCode Academy",
     "category": "eLearning",
-    "depends": ["base", "web"],
+    "depends": ["base", "web","report_xlsx"],
     "data": [
+        "report/ica_course_report_action.xml",
         "report/course_enrollment_report.xml",
 
         "data/ica_course_sequence.xml",

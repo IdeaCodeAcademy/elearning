@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_ica_course" model="ir.actions.report">
+        <field name="name">Course Report</field>
+        <field name="model">ica.course</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">ica_elearning.report_ica_course</field>
+        <field name="report_file">ica_elearning.report_ica_course</field>
+        <field name="print_report_name">'Course - %s' % object.reference</field>
+        <field name="binding_model_id" ref="ica_elearning.model_ica_course"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
