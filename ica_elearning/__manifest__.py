@@ -6,6 +6,7 @@
     "data": [
         "data/ica_course_sequence.xml",
 
+        "security/security.xml",
         "security/ir.model.access.csv",
         "wizard/ica_course_feedback_wizard.xml",
         "views/ica_course.xml",

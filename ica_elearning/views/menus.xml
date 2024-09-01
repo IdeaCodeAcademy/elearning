@@ -5,13 +5,21 @@
         <menuitem id="course_category" name="Courses" sequence="0"
                   action="ica_elearning.ica_course_action"/>
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="details_category" name="Details" sequence="1">
-            <!-- This Menu Item must have a parent and an action -->
-            <menuitem id="module_category" name="Modules" action="ica_elearning.ica_course_module_action" sequence="0"/>
-            <menuitem id="lesson_category" name="Lessons" action="ica_elearning.ica_course_lesson_action" sequence="1"/>
+        <menuitem id="configuration_category" name="Configuration" sequence="1" groups="ica_elearning.group_author">
+
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="details_category" name="Details" sequence="1">
+                <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="module_category" name="Modules" action="ica_elearning.ica_course_module_action"
+                          sequence="0"/>
+                <menuitem id="lesson_category" name="Lessons" action="ica_elearning.ica_course_lesson_action"
+                          sequence="1"/>
+            </menuitem>
+            <!-- This Menu Item Must have a parent -->
+            <menuitem id="course_enrollment_category" name="" action="ica_elearning.ica_course_enrollment_action"
+                      sequence="2" groups="ica_elearning.group_manager"/>
+            <menuitem id="course_feedback_category" name="" action="ica_elearning.ica_course_feedback_action"
+                      sequence="3" groups="ica_elearning.group_manager"/>
         </menuitem>
-        <!-- This Menu Item Must have a parent -->
-        <menuitem id="course_enrollment_category" name="" action="ica_elearning.ica_course_enrollment_action" sequence="2"/>
-        <menuitem id="course_feedback_category" name="" action="ica_elearning.ica_course_feedback_action" sequence="3"/>
     </menuitem>
 </odoo>
