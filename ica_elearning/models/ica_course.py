@@ -30,8 +30,13 @@ class IcaCourse(models.Model):
     active = fields.Boolean(string='Active', default=True)
     per_fees = fields.Monetary(currency_field="currency_id")
     enrollment_ids = fields.One2many('ica.course.enrollment.line', 'course_id', string='Enrollment', )
-    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
     feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
+    enrollment_count = fields.Integer(compute="_compute_enrollment_count",inverse="_inverse_total_amount")
+    total_amount = fields.Monetary()
+
+    def _inverse_total_amount(self):
+        if self.enrollment_ids:
+            self.total_amount = sum(self.enrollment_ids.mapped('fees'))
 
     @api.onchange('fees','author_ids')
     def _onchange_fees(self):

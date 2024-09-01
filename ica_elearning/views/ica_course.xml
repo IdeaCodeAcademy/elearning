@@ -70,6 +70,7 @@
                             <field name="release_date"/>
                         </group>
                         <group>
+                            <field name="total_amount"/>
                             <field name="description"/>
                         </group>
                     </group>
