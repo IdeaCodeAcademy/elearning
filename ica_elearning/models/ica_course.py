@@ -36,6 +36,7 @@ class IcaCourse(models.Model):
     feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
     enrollment_count = fields.Integer(compute="_compute_enrollment_count", inverse="_inverse_total_amount")
     total_amount = fields.Monetary()
+    cover = fields.Image()
 
     def _inverse_total_amount(self):
         if self.enrollment_ids:

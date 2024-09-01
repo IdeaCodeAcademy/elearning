@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+    <record id="ica_course_view_kanban" model="ir.ui.view">
+        <field name="name">ica_course_view_kanban</field>
+        <field name="model">ica.course</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="cover"/>
+                <field name="state"/>
+                <field name="fees"/>
+                <field name="currency_id"/>
+                <field name="module_ids"/>
+                <field name="module_count"/>
+                <field name="lesson_ids"/>
+                <field name="lesson_count"/>
+                <field name="enrollment_ids"/>
+                <field name="enrollment_count"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <div class="o_kanban_image_fill_left d-none d-md-block o_kanban_image_full">
+                                <img t-attf-src="#{kanban_image('ica.course', 'cover', record.id.raw_value)}"
+                                     role="img" t-att-alt="record.id.value"/>
+                            </div>
+                            <div class="ribbon ribbon-top-right" invisible="state != 'published'">
+                                <span class="text-bg-danger">Published</span>
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-column justify-content-between">
+                                <div>
+                                    <strong class="o_kanban_record_title oe_partner_heading">
+                                        <field name="display_name"/>
+                                    </strong>
+                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                    <ul>
+                                        <li t-if="record.fees and record.currency_id">
+                                            <field name="fees"/>
+                                        </li>
+                                        <li t-if="record.module_ids">
+                                            Modules -
+                                            <field name="module_count"/>
+                                        </li>
+                                        <li t-if="record.lesson_ids">
+                                            Lessons -
+                                            <field name="lesson_count"/>
+                                        </li>
+                                        <li t-if="record.enrollment_ids">
+                                            Enrollment -
+                                            <field name="enrollment_count"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left"/>
+                                    <div class="oe_kanban_bottom_right"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <record id="ica_course_view_tree" model="ir.ui.view">
         <field name="name">ica_course_view_tree</field>
         <field name="model">ica.course</field>
@@ -17,6 +80,7 @@
                 <field name="module_count" optional="show" widget="badge"/>
                 <field name="enrollment_count" optional="show" widget="badge"/>
                 <field name="currency_id" optional="hide"/>
+                <field name="cover" widget="image" optional="hide"/>
                 <field name="fees" optional="show" sum="Total Course Fees" groups="ica_elearning.group_author"/>
             </tree>
         </field>
@@ -41,6 +105,7 @@
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
+                    <field name="cover" class="oe_avatar" widget="image"/>
                     <widget name="web_ribbon" title="Published" bg_color="text-bg-success"
                             invisible="state != 'published'"/>
                     <widget name="web_ribbon" title="Unpublished" bg_color="text-bg-danger"
@@ -128,9 +193,9 @@
         <field name="name">Courses</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.course</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_filter_state_published': 0,
-                               'search_default_groupby_author_ids': 0}</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_filter_state_published': 1,
+                               'search_default_groupby_author_ids': 1}</field>
     </record>
 
     <record id="model_ica_course_published" model="ir.actions.server">
