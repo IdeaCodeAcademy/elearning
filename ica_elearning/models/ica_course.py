@@ -49,9 +49,12 @@ class IcaCourse(models.Model):
         self.state = 'draft'
 
     def action_published(self):
-        if not (self.module_ids and self.lesson_ids):
-            raise UserError(_('you should have at least one lesson'))
-        self.state = 'published'
+        for rec in self:
+            if rec.state == 'published':
+                raise UserError(_("your course is already published."))
+            if not (rec.module_ids and rec.lesson_ids):
+                raise UserError(_('you should have at least one lesson'))
+            rec.state = 'published'
 
     def action_unpublished(self):
         self.state = 'unpublished'

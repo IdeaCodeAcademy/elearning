@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <record id="ica_course_view_tree" model="ir.ui.view">
         <field name="name">ica_course_view_tree</field>
         <field name="model">ica.course</field>
         <field name="arch" type="xml">
-            <tree string="ica_course_tree">
+            <tree string="ica_course_view_tree">
                 <field name="name"/>
                 <field name="state" widget="badge"
                        decoration-info="state == 'draft'"
@@ -40,8 +39,10 @@
                     <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
-                    <widget name="web_ribbon" title="Published" bg_color="text-bg-success" invisible="state != 'published'"/>
-                    <widget name="web_ribbon" title="Unpublished" bg_color="text-bg-danger" invisible="state != 'unpublished'"/>
+                    <widget name="web_ribbon" title="Published" bg_color="text-bg-success"
+                            invisible="state != 'published'"/>
+                    <widget name="web_ribbon" title="Unpublished" bg_color="text-bg-danger"
+                            invisible="state != 'unpublished'"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_modules" type="object" class="oe_stat_button" icon="fa-users">
                             <field string="Modules" name="module_count" widget="statinfo"/>
@@ -94,4 +95,15 @@
         <field name="res_model">ica.course</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="model_ica_course_published" model="ir.actions.server">
+        <field name="name">Publish</field>
+        <field name="model_id" ref="ica_elearning.model_ica_course"/>
+        <field name="binding_model_id" ref="ica_elearning.model_ica_course"/>
+        <field name="binding_view_types">tree</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_published()</field>
+    </record>
+
+
 </odoo>
