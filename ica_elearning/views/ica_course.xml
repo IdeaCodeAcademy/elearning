@@ -11,9 +11,12 @@
                        decoration-info="state == 'draft'"
                        decoration-success="state == 'published'"
                        decoration-danger="state == 'unpublished'"/>
-                <field name="author_ids" widget="many2many_tags" optional="show"/>
+                <field name="author_ids" widget="many2many_tags" optional="hide"/>
                 <field name="module_ids" optional="hide"/>
                 <field name="lesson_ids" optional="hide"/>
+                <field name="lesson_count" optional="show" widget="badge"/>
+                <field name="module_count" optional="show" widget="badge"/>
+                <field name="enrollment_count" optional="show" widget="badge"/>
             </tree>
         </field>
     </record>
