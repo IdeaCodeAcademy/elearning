@@ -21,6 +21,7 @@
         "views/menus.xml",
 
         "views/web_templates/ica_home_template.xml",
+        "views/web_templates/ica_course_detail_template.xml",
 
     ],
     "demo": [

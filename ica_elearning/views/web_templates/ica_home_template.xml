@@ -13,10 +13,13 @@
                     </thead>
                     <tbody>
                         <t t-foreach="course_ids" t-as="course">
-                            <tr>
-                                <td><t t-esc="course.name"/></td>
-                                <td><t t-esc="course.fees"/></td>
-                            </tr>
+                            <a>
+                                <tr>
+                                    <td><t t-esc="course.name"/></td>
+                                    <td><t t-esc="course.fees"/></td>
+                                    <td><a t-attf-href="/ica/course/details/#{course.id}" class="btn btn-primary">Details</a></td>
+                                </tr>
+                            </a>
                         </t>
                     </tbody>
                 </table>

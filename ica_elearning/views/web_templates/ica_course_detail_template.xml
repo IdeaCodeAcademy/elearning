@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="ica_elearning.course_details">
+        <t t-call="website.layout">
+            <div class="container mt-2">
+                <h1>
+                    <t t-esc="course_id.name"/>
+                </h1>
+                <div class="container">
+                    Hello Course Details
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
