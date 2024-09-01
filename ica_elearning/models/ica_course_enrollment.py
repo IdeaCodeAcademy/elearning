@@ -13,4 +13,5 @@ class IcaCourseEnrollment(models.Model):
 
     @api.depends('line_ids')
     def _compute_total_amount(self):
-        self.total_amount = sum(self.line_ids.mapped('fees'))
+        for rec in self:
+            rec.total_amount = sum(rec.line_ids.mapped('fees'))
