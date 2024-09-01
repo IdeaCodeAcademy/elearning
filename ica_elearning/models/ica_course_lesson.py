@@ -6,8 +6,11 @@ class IcaCourseLesson(models.Model):
     _description = 'IcaCourseLesson'
 
     name = fields.Char(required=True)
-    course_id = fields.Many2one('ica.course', string='Course', required=True,
-                                domain=[('state', '=', 'published')])
+
+    def _get_author_domain(self):
+        return [('author_ids', 'in', self.env.user.partner_id.id)]
+
+    course_id = fields.Many2one('ica.course', string='Course', domain=_get_author_domain)
     module_id = fields.Many2one('ica.course.module', string='Module',
                                 domain=[('course_id', '=', course_id),
                                         ('state', '=', 'published')])

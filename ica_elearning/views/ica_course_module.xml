@@ -25,7 +25,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="course_id" domain="[('state','=','published')]"/>
+                        <field name="course_id"/>
                     </group>
                     <notebook>
                         <page name="Lessons">
