@@ -43,5 +43,16 @@
             <field name="perm_unlink" eval="False"/>
             <field name="groups" eval="[Command.link(ref('ica_elearning.group_author'))]"/>
         </record>
+
+        <record id="elearning_manager" model="ir.rule">
+            <field name="name">ICA Elearning : Managers</field>
+            <field name="model_id" ref="ica_elearning.model_ica_course"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="groups" eval="[Command.link(ref('ica_elearning.group_manager'))]"/>
+        </record>
     </data>
 </odoo>
