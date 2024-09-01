@@ -89,11 +89,31 @@
         </field>
     </record>
 
+
+    <record id="ica_course_view_search" model="ir.ui.view">
+        <field name="name">ica_course_view_search</field>
+        <field name="model">ica.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="author_ids"/>
+                <filter name="filter_state_published" string="Published" domain="[('state','=','published')]"/>
+                <filter name="filter_state_unpublished" string="Unpublished" domain="[('state','=','unpublished')]"/>
+                <filter name="filter_state_draft" string="Draft" domain="[('state','=','draft')]"/>
+                <group expand="1" string="Group By">
+                    <filter name="groupby_state" context="{'group_by' : 'state'}" string="State"/>
+                    <filter name="groupby_author_ids" context="{'group_by' : 'author_ids'}" string="Authors"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="ica_course_action" model="ir.actions.act_window">
         <field name="name">Courses</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.course</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_state_published':1,'search_default_groupby_author_ids':1}</field>
     </record>
 
     <record id="model_ica_course_published" model="ir.actions.server">
