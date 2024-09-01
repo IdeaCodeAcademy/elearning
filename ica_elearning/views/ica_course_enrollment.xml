@@ -18,7 +18,10 @@
                     </group>
                     <field name="line_ids">
                         <tree editable="1">
-                            <field name="enrollment_id"/>
+                            <field name="course_id"/>
+                            <field name="currency_id" optional="hide"/>
+                            <field name="fees"/>
+                            <field name="partner_id" optional="hide"/>
                         </tree>
                     </field>
                 </sheet>

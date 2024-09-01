@@ -108,15 +108,15 @@ class IcaCourse(models.Model):
             "context": {"default_course_id": self.id},
         }
 
-    def action_self_enrollment(self):
-        current_partner = self.env.user.partner_id.id
-        if current_partner in self.enrollment_ids.partner_id.ids:
-            raise UserError(_("You are already enrolled in this course."))
-        # self.enrollment_ids.create({'partner_id': self.env.user.partner_id.id, 'course_id': self.id})
-        # data = {
-        #     "enrollment_ids": [fields.Command.create({"partner_id": current_partner})]
-        # }
-        data = {"enrollment_ids": [(0, 0, {"partner_id": current_partner})]}
-        self.write(data)
+    # def action_self_enrollment(self):
+    #     current_partner = self.env.user.partner_id.id
+    #     if current_partner in self.enrollment_ids.partner_id.ids:
+    #         raise UserError(_("You are already enrolled in this course."))
+    #     # self.enrollment_ids.create({'partner_id': self.env.user.partner_id.id, 'course_id': self.id})
+    #     # data = {
+    #     #     "enrollment_ids": [fields.Command.create({"partner_id": current_partner})]
+    #     # }
+    #     data = {"enrollment_ids": [(0, 0, {"partner_id": current_partner})]}
+    #     self.write(data)
 
     feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
