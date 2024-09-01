@@ -22,7 +22,12 @@ class IcaCourse(models.Model):
     lesson_count = fields.Integer(string='Lessons', compute="_compute_lesson_count")
     enrollment_ids = fields.One2many('ica.course.enrollment', 'course_id', string='Enrollment', )
     enrollment_count = fields.Integer(compute="_compute_enrollment_count")
-    reference = fields.Char(default=lambda self: _('New'), copy=False, readonly=True, )
+    reference = fields.Char(default=lambda self: _('New'), copy=False, readonly=True)
+
+    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company)
+    currency_id = fields.Many2one('res.currency', string='Currency', related="company_id.currency_id")
+    fees = fields.Monetary(currency_field="currency_id")
+    release_date = fields.Date(string='Date')
 
     @api.model
     def create(self, values):

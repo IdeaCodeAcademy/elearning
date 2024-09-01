@@ -61,6 +61,10 @@
                         <group>
                             <field name="name"/>
                             <field name="author_ids" widget="many2many_tags"/>
+                            <field name="company_id"/>
+                            <field name="currency_id"/>
+                            <field name="fees"/>
+                            <field name="release_date"/>
                         </group>
                         <group>
                             <field name="description"/>
