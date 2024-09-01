@@ -21,4 +21,27 @@
             <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
         </record>
     </data>
+    <data>
+        <record id="elearning_reader" model="ir.rule">
+            <field name="name">ICA Elearning : Readers</field>
+            <field name="model_id" ref="ica_elearning.model_ica_course"/>
+            <field name="domain_force">[('state', '=', 'published')]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('ica_elearning.group_reader'))]"/>
+        </record>
+
+        <record id="elearning_author" model="ir.rule">
+            <field name="name">ICA Elearning : Authors</field>
+            <field name="model_id" ref="ica_elearning.model_ica_course"/>
+            <field name="domain_force">[('author_ids', 'in', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('ica_elearning.group_author'))]"/>
+        </record>
+    </data>
 </odoo>
