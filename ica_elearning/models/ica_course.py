@@ -38,6 +38,19 @@ class IcaCourse(models.Model):
     total_amount = fields.Monetary()
     cover = fields.Image()
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('number', _('New')) == _('New'):
+                vals['reference'] = self.env['ir.sequence'].next_by_code(self._name)
+        return super(IcaCourse, self).create(vals_list)
+
+    # @api.model
+    # def create(self, values):
+    #     if values.get('number', _('New')) == _('New'):
+    #         values['reference'] = self.env['ir.sequence'].next_by_code(self._name)
+    #     return super(IcaCourse, self).create(values)
+
     def _inverse_total_amount(self):
         if self.enrollment_ids:
             self.total_amount = sum(self.enrollment_ids.mapped('fees'))
@@ -46,12 +59,6 @@ class IcaCourse(models.Model):
     def _onchange_fees(self):
         if self.fees and self.author_ids:
             self.per_fees = self.fees / len(self.author_ids)
-
-    @api.model
-    def create(self, values):
-        if values.get('number', _('New')) == _('New'):
-            values['reference'] = self.env['ir.sequence'].next_by_code(self._name)
-        return super(IcaCourse, self).create(values)
 
     @api.depends('enrollment_ids')
     def _compute_enrollment_count(self):

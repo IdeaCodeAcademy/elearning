@@ -7,5 +7,11 @@
             <field name="prefix">IC/</field>
             <field name="padding">6</field>
         </record>
+        <record id="ica_course_enrollment_sequence" model="ir.sequence">
+            <field name="name">ICA Course Enrollment</field>
+            <field name="code">ica.course.enrollment</field>
+            <field name="prefix">ICE/</field>
+            <field name="padding">6</field>
+        </record>
     </data>
 </odoo>
