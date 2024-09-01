@@ -29,6 +29,9 @@ class IcaCourse(models.Model):
     release_date = fields.Date(string='Date')
     active = fields.Boolean(string='Active', default=True)
     per_fees = fields.Monetary(currency_field="currency_id")
+    enrollment_ids = fields.One2many('ica.course.enrollment.line', 'course_id', string='Enrollment', )
+    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+    feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
 
     @api.onchange('fees','author_ids')
     def _onchange_fees(self):
@@ -90,8 +93,7 @@ class IcaCourse(models.Model):
             "context": {"default_course_id": self.id},
         }
 
-    enrollment_ids = fields.One2many('ica.course.enrollment.line', 'course_id', string='Enrollment', )
-    enrollment_count = fields.Integer(compute="_compute_enrollment_count")
+
 
     @api.depends('enrollment_ids')
     def _compute_enrollment_count(self):
@@ -119,4 +121,3 @@ class IcaCourse(models.Model):
     #     data = {"enrollment_ids": [(0, 0, {"partner_id": current_partner})]}
     #     self.write(data)
 
-    feedback_ids = fields.One2many('ica.course.feedback', 'course_id')
