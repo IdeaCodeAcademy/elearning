@@ -28,7 +28,7 @@
                         <group>
                             <field name="name"/>
                             <field name="course_id"/>
-                            <field name="module_id"/>
+                            <field name="module_id" domain="[('course_id','=',course_id)]"/>
                             <field name="video"/>
                         </group>
                         <group>
