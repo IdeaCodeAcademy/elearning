@@ -22,5 +22,7 @@
             <menuitem id="course_feedback_category" name="" action="ica_elearning.ica_course_feedback_action"
                       sequence="3" groups="ica_elearning.group_manager"/>
         </menuitem>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="ica_course_client_action_category" name="Client Action" sequence="100" action="ica_elearning.ica_course_client_action"/>
     </menuitem>
 </odoo>
