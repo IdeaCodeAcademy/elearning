@@ -43,7 +43,7 @@
                             invisible="state != 'published'"/>
                     <widget name="web_ribbon" title="Unpublished" bg_color="text-bg-danger"
                             invisible="state != 'unpublished'"/>
-                    <div class="oe_button_box" name="button_box">
+                    <div class="oe_button_box" name="button_box" groups="ica_elearning.group_author">
                         <button name="action_view_modules" type="object" class="oe_stat_button" icon="fa-users">
                             <field string="Modules" name="module_count" widget="statinfo"/>
                         </button>
@@ -63,7 +63,7 @@
                             <field name="author_ids" widget="many2many_tags"/>
                             <field name="company_id"/>
                             <field name="currency_id"/>
-                            <field name="fees"/>
+                            <field name="fees" groups="ica_elearning.group_author"/>
                             <field name="release_date"/>
                         </group>
                         <group>
@@ -117,7 +117,8 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ica.course</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_filter_state_published':1,'search_default_groupby_author_ids':1}</field>
+        <field name="context">{'search_default_filter_state_published': 1,
+                               'search_default_groupby_author_ids': 1}</field>
     </record>
 
     <record id="model_ica_course_published" model="ir.actions.server">
