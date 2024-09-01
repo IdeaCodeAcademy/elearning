@@ -2,7 +2,25 @@
 <odoo>
     <template id="ica_elearning.home">
         <t t-call="website.layout">
-            <h1>Hello Home Page</h1>
+            <div class="container mt-2">
+                <h1>Hello Home Page</h1>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Fees</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="course_ids" t-as="course">
+                            <tr>
+                                <td><t t-esc="course.name"/></td>
+                                <td><t t-esc="course.fees"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
         </t>
     </template>
 </odoo>
