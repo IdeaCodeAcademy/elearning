@@ -8,6 +8,7 @@ from odoo.exceptions import UserError
 class IcaCourse(models.Model):
     _name = 'ica.course'
     _description = 'IcaCourse'
+    _inherit = ['mail.thread','mail.activity.mixin']
 
     name = fields.Char()
     description = fields.Text()
