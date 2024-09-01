@@ -3,6 +3,6 @@
     <record id="ica_course_client_action" model="ir.actions.client">
         <field name="name">Courses</field>
         <field name="tag">ica_elearning.IcaCourseClientAction</field>
-        <field name="target">current </field>
+        <field name="target">current</field>
     </record>
 </odoo>
