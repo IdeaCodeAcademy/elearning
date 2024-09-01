@@ -16,6 +16,7 @@
                 <field name="lesson_count" optional="show" widget="badge"/>
                 <field name="module_count" optional="show" widget="badge"/>
                 <field name="enrollment_count" optional="show" widget="badge"/>
+                <field name="fees" optional="show" sum="Total Course Fees" groups="ica_elearning.group_author"/>
             </tree>
         </field>
     </record>
