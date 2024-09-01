@@ -4,6 +4,7 @@ from odoo import models
 class PartnerXlsx(models.AbstractModel):
     _name = 'report.ica_elearning.report_ica_course'
     _inherit = 'report.report_xlsx.abstract'
+    _description='report_ica_course'
 
     def generate_xlsx_report(self, workbook, data, partners):
         for obj in partners:
