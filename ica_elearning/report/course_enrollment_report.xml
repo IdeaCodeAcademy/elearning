@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_ica_course_enrollment">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-6">
+                                <h1>
+                                    <span t-field="o.partner_id"/>
+                                </h1>
+                                <table class="table table-responsive-lg o_main_table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Fees</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.line_ids" t-as="line">
+                                            <tr>
+                                                <td><span t-field="line.course_id"/></td>
+                                                <td><span t-field="line.fees"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Total Fees</td>
+                                            <td>
+                                                <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="sum(o.line_ids.mapped('fees'))"/>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="oe_structure"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_ica_course_enrollment" model="ir.actions.report">
+        <field name="name">Enrollment Report</field>
+        <field name="model">ica.course.enrollment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ica_elearning.report_ica_course_enrollment</field>
+        <field name="report_file">ica_elearning.report_ica_course_enrollment</field>
+        <field name="print_report_name">'Enrollment - %s' % object.partner_id.name</field>
+        <!--        <field name="print_report_name">(object._get_report_base_filename())</field>-->
+        <field name="binding_model_id" ref="ica_elearning.model_ica_course_enrollment"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

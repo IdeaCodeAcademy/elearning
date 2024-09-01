@@ -4,6 +4,8 @@
     "category": "eLearning",
     "depends": ["base", "web"],
     "data": [
+        "report/course_enrollment_report.xml",
+
         "data/ica_course_sequence.xml",
 
         "security/security.xml",
@@ -15,6 +17,7 @@
         "views/ica_course_enrollment.xml",
         "views/ica_course_feedback.xml",
         "views/menus.xml",
+
     ],
     "demo": [
         "demo/ica_course.xml",
