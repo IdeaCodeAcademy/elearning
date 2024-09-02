@@ -18,11 +18,11 @@
         "views/ica_course_lesson.xml",
         "views/ica_course_enrollment.xml",
         "views/ica_course_feedback.xml",
+        "views/res_config_settings.xml",
         "views/menus.xml",
 
         "views/web_templates/ica_home_template.xml",
         "views/web_templates/ica_course_detail_template.xml",
-
     ],
     "demo": [
         "demo/ica_course.xml",

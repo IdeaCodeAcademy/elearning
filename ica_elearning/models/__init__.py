@@ -4,3 +4,4 @@ from . import ica_course_lesson
 from . import ica_course_feedback
 from . import ica_course_enrollment
 from . import ica_course_enrollment_line
+from . import res_config_settings

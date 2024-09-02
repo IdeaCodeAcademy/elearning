@@ -36,3 +36,10 @@ class IcaCourseEnrollment(models.Model):
     def _compute_total_amount(self):
         for rec in self:
             rec.total_amount = sum(rec.line_ids.mapped('fees'))
+
+    def action_send_email(self):
+        # ica_elearning.send_mail
+        params = self.env['ir.config_parameter'].sudo()
+        send_mail = params.get_param('ica_elearning.send_mail')
+        if send_mail:
+            ...

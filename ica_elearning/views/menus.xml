@@ -7,7 +7,8 @@
                   action="ica_elearning.ica_course_action"/>
         <!-- This Menu Item Must have a parent -->
         <menuitem id="configuration_category" name="Configuration" sequence="1" groups="ica_elearning.group_author">
-
+            <!-- This Menu Item must have a parent and an action -->
+            <menuitem id="settings_category" name="Settings" action="ica_elearning.res_config_settings_view_action" groups="ica_elearning.group_manager"/>
             <!-- This Menu Item Must have a parent -->
             <menuitem id="details_category" name="Details" sequence="1">
                 <!-- This Menu Item must have a parent and an action -->
