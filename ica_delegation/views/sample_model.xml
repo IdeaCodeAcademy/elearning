@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sample_model_action" model="ir.actions.act_window">
+        <field name="name">Sample Model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sample.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="new_model_action" model="ir.actions.act_window">
+        <field name="name">New Model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">new.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="ica_delegation_root" name="Delegation">
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="sample_model_category" name="Sample Model" action="ica_delegation.sample_model_action" sequence="0"/>
+        <menuitem id="new_model_category" name="New Model" action="ica_delegation.new_model_action" sequence="1"/>
+    </menuitem>
+</odoo>
