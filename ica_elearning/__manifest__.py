@@ -4,6 +4,7 @@
     "category": "eLearning",
     "depends": ["base", "web", "report_xlsx", "mail", "website"],
     "data": [
+        "data/schedule_action.xml",
         "views/ica_client_action.xml",
         "report/ica_course_report_action.xml",
         "report/course_enrollment_report.xml",
@@ -19,10 +20,12 @@
         "views/ica_course_enrollment.xml",
         "views/ica_course_feedback.xml",
         "views/res_config_settings.xml",
+        "views/res_partner.xml",
         "views/menus.xml",
 
         "views/web_templates/ica_home_template.xml",
         "views/web_templates/ica_course_detail_template.xml",
+
     ],
     "demo": [
         "demo/ica_course.xml",
@@ -34,5 +37,6 @@
             "ica_elearning/static/src/client_action/client_action.js",
             "ica_elearning/static/src/client_action/client_action.xml",
         ]
-    }
+    },
+    "images": ["static/description/img.png"],
 }
