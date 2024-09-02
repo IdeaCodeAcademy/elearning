@@ -6,3 +6,5 @@ class SampleModel(models.Model):
     _description = 'SampleModel'
 
     name = fields.Char()
+    age = fields.Integer()
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], default='male')
