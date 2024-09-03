@@ -7,21 +7,45 @@ import {useRef, useEffect} from "@odoo/owl";
 
 class SaleOrderFormController extends FormController {
     setup() {
-        super.setup(...arguments);
+        console.log("Sale order form inherited!")
+        //this.props.preventEdit = true
+        super.setup()
+
         useEffect(() => {
             //console.log(this.model.root.data.state)
             this.disableForm()
         }, () => [this.model.root.data.state])
-        this.onNotebookPageChange = (notebookId, page) =>this.disableForm();
+
+        this.onNotebookPageChange = (notebookId, page) => {
+            this.disableForm()
+        };
     }
 
     disableForm() {
-        console.log(this.model.root.data.state) // current model of state field
         const inputElements = document.querySelectorAll(".o_form_sheet input")
-        const fieldWidgets = document.querySelectorAll(".o_form_sheet .o_field_widget");
-        console.log(inputElements);
-        if (inputElements) inputElements.forEach(e => e.setAttribute("disabled", 1))
-        if (fieldWidgets) fieldWidgets.forEach(e => e.classList.add("pe-none"))
+        const fieldWidgets = document.querySelectorAll(".o_form_sheet .o_field_widget")
+
+        const cancelled = this.model.root.data.state == 'draft'
+
+        if (cancelled) {
+            if (inputElements) inputElements.forEach(e => e.setAttribute("disabled", 1))
+            if (fieldWidgets) fieldWidgets.forEach(e => e.classList.add("pe-none"))
+            this.canEdit = false
+        } else {
+            if (inputElements) inputElements.forEach(e => e.removeAttribute("disabled"))
+            if (fieldWidgets) fieldWidgets.forEach(e => e.classList.remove("pe-none"))
+            this.canEdit = true
+        }
+    }
+
+    async beforeLeave() {
+        if (this.model.root.data.state == 'draft') return
+        super.beforeLeave()
+    }
+
+    async beforeUnload(ev) {
+        if (this.model.root.data.state == 'draft') return
+        super.beforeUnload(ev)
     }
 }
 
