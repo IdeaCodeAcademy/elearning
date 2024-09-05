@@ -6,7 +6,6 @@
 
         "views/res_partner_kanban_view.xml",
         "views/res_partner_widget.xml",
-        "views/res_partner_lmap.xml",
     ],
     "assets": {
         "web.assets_backend": {

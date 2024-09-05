@@ -4,6 +4,7 @@ import { visitXML } from "@web/core/utils/xml"
 
 export class LeafletMapArchParser {
     parse(arch){
+        console.log("arch")
         console.log(arch)
 
         const latitude = arch.getAttribute("latitude")

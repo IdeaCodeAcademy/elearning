@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_ajs_contact_lmap" model="ir.ui.view">
+        <field name="name">view.ajs.contact.lmap</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <lmap latitude="latitude" longitude="longitude">
+                <field name="name"/>
+            </lmap>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">view_partner_form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="latitude"/>
+                <field name="longitude"/>
+            </field>
+        </field>
+    </record>
+    <record id="res_partner_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,lmap</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="leaflet_map_root" name="leaflet_map" action="res_partner_action"/>
+</odoo>
