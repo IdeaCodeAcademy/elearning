@@ -1,11 +1,12 @@
 {
     "name": "Disabled View",
-    "depends": ["base", "web", "sale_management", "contacts"],
+    "depends": ["base", "web", "sale_management", "leaflet_map"],
     "data": [
         "views/sale_order.xml",
 
         "views/res_partner_kanban_view.xml",
         "views/res_partner_widget.xml",
+        "views/res_partner_lmap.xml",
     ],
     "assets": {
         "web.assets_backend": {

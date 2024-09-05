@@ -5,4 +5,6 @@ class ResPartner(models.Model):
 
     username = fields.Char()
     late_boolean = fields.Boolean(default=False)
+    latitude = fields.Char()
+    longitude = fields.Char()
 
