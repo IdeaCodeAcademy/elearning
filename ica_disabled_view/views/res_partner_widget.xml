@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-     <record id="res_partner_form_view_inherit" model="ir.ui.view">
+    <record id="res_partner_form_view_inherit" model="ir.ui.view">
         <field name="name">res.partner.form.view.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
+            <div class="oe_button_box" name="button_box" position="inside">
+                <button name="action_sepica_effect" type="object"
+                        class="oe_stat_button" icon="fa-calendar">
+                </button>
+            </div>
+            <!--            <form position="inside">-->
+            <!--                <header>-->
+            <!--                    <button name="action_sepica_effect" class="btn btn-primary" string="Sepica"/>-->
+            <!--                </header>-->
+            <!--            </form>-->
             <field name="website" position="before">
                 <field name="username" widget="my_text_field"/>
-<!--                <field name="username" widget="username"/>-->
+                <field name="username" widget="username"/>
                 <field name="late_boolean" widget="late_boolean"/>
             </field>
         </field>

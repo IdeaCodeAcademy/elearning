@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="ica_disabled_view.SepiaEffect">
+        <div style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: rgba(124,87,0, 0.4);
+    "></div>
+    </t>
+</templates>
