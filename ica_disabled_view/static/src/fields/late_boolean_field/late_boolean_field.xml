@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="ica_disabled_view.LateOrderBooleanField" t-inherit="web.BooleanField">
+        <xpath expr="//CheckBox" position="after">
+              <span t-if="state.value" class="text-danger"> Late! </span>
+        </xpath>
+    </t>
+</templates>
