@@ -32,5 +32,5 @@
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="leaflet_map_root" name="leaflet_map" action="res_partner_action"/>
+    <menuitem id="leaflet_map_root" name="Leaflet Map View" action="res_partner_action"/>
 </odoo>
