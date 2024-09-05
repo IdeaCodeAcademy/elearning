@@ -6,6 +6,8 @@
         <field name="arch" type="xml">
             <lmap latitude="latitude" longitude="longitude">
                 <field name="name"/>
+<!--                <field name="latitude"/>-->
+<!--                <field name="longitude"/>-->
             </lmap>
         </field>
     </record>
